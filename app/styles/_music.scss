@@ -1,0 +1,59 @@
+.music {
+  width: 100vw;
+  min-height: 70vh;
+  background: #fafafa;
+  position: relative;
+  padding: 32px;
+
+  .music-wrapper {
+    @include flexbox();
+    justify-content: space-between;
+  }
+}
+
+.music-copy, {
+  width: 45%;
+  h1 {
+    color: $primaryColorDark;
+  }
+}
+
+.music-content {
+  @extend .music-copy;
+  order: -1;
+  position: relative;
+  padding-top: 16px;
+  max-height: 90%;
+  overflow: auto;
+
+  .song-card {
+    background: $primaryColorDark;
+    border-radius: 2px;
+    box-shadow: 0 2px 2.5px rgba(0,0,0,0.24);
+    width: 90%;
+    margin-bottom: 8px;
+    min-height: 72px;
+    @include flexbox();
+
+
+    .song-image {
+      margin-right: 16px;
+      height: 100%;
+    }
+
+    .content {
+      @include flex(1);
+      position: relative;
+      color: #fff;
+      align-self: center;
+      h3 {
+        @include leading-rows(0);
+      }
+    }
+  }
+}
+.play-toggle {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

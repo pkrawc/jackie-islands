@@ -1,0 +1,14 @@
+// Colors
+
+$primaryColor: #00BCD4;
+$primaryColorDark: #0097A7;
+$primaryColorLight: #B2EBF2;
+
+$accentColor: #FFEA00;
+
+// Typography
+
+$small: new-breakpoint(max-width 480px and media screen);
+$medium: new-breakpoint(min-width 481px);
+$large: new-breakpoint(min-width 769px);
+$xlarge: new-breakpoint(min-width 1025px);

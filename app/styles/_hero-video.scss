@@ -1,0 +1,27 @@
+.hero-video {
+  width: 100vw;
+  height: 95vh;
+  position: relative;
+  @include flexbox();
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 800px){
+    background: url('../images/sm-bg.jpg');
+    background-origin: center;
+    background-position: cover;
+  }
+}
+.bg-vid {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -999;
+  background: $primaryColorDark;
+  @media screen and (max-width: 800px){
+    display: none;
+  }
+}

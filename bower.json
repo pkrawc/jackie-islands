@@ -1,0 +1,11 @@
+{
+  "name": "jackie-islands",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "bourbon": "~4.2.1",
+    "neat": "~1.7.2",
+    "normalize-scss": "~3.0.2",
+    "mustache": "~2.0.0"
+  }
+}
