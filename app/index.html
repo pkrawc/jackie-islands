@@ -33,21 +33,24 @@
           <div class="wrapper music-wrapper">
             <div class="music-copy">
               <h1>Some Words</h1>
-              <p>Jackie Islands is a Indie Pop band from the Chicagoland area. We are Bobby Dunne, Doug Patterson, Joe D'anna, Marshall Hayes. We are currently working on our first 9 track album Girl Glacious. Welcome to the Island.</p>
+              <p>Jackie Islands is a Indie Pop band from the Chicagoland area. We are Bobby Dunne, Doug Patterson, Joe D'anna, Marshall Hayes. We are currently working on our first 9 track album Girl Glacious.<br>Welcome to the Island.</p>
             </div>
             <div class="music-content">
-              <template id="sound-cloud-template">
-                <div class="song-card">
-                  <img class="song-image" src="{{artwork_url}}" alt="{{title}}">
-                  <div class="content">
-                    <h3>{{title}}</h3>
-                    <img class="play-toggle" src="#">
-                    <audio preload>
-                      <source src="{{uri}}/stream?client_id=38420d37956ecca4db2adfc516c1a534">
-                    </audio>
-                  </div>
-                </div>
-              </template>
+
+              <div class="music-player">
+                <img class="artwork-image" >
+                <ul class="song-list">
+                  <template id="sound-cloud-template">
+                    <li>
+                      <img class="play-toggle">
+                      <span>{{title}}</span>
+                      <audio preload class="track" data-artwork="{{artwork_url}}">
+                        <source src="{{uri}}/stream?client_id=38420d37956ecca4db2adfc516c1a534">
+                      </audio>
+                    </li>
+                  </template>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

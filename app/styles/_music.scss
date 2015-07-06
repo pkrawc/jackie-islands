@@ -6,54 +6,63 @@
   padding: 32px;
 
   .music-wrapper {
-    @include flexbox();
     justify-content: space-between;
+    @include flexbox();
   }
 }
 
-.music-copy, {
-  width: 45%;
+.music-copy {
+  align-self: center;
+  margin-left: 16px;
+  @include flex(1);
+
   h1 {
     color: $primaryColorDark;
   }
 }
 
 .music-content {
-  @extend .music-copy;
+  padding-top: 16px;
   order: -1;
   position: relative;
-  padding-top: 16px;
-  max-height: 90%;
-  overflow: auto;
+  width: 33%;
+}
 
-  .song-card {
-    background: $primaryColorDark;
-    border-radius: 2px;
-    box-shadow: 0 2px 2.5px rgba(0,0,0,0.24);
-    width: 90%;
-    margin-bottom: 8px;
-    min-height: 72px;
+.music-player {
+  position: relative;
+  background: $primaryColor;
+  color: #fff;
+  margin: 0 auto;
+  @include flexbox();
+  flex-direction: column;
+  border-radius: 2px;
+  overflow: none;
+}
+
+.song-list {
+  list-style: none;
+  margin-top: 8px;
+  li {
     @include flexbox();
-
-
-    .song-image {
-      margin-right: 16px;
-      height: 100%;
-    }
-
-    .content {
-      @include flex(1);
-      position: relative;
-      color: #fff;
-      align-self: center;
-      h3 {
-        @include leading-rows(0);
-      }
+    align-items: center;
+    &:not(:first-of-type) {
+      margin-top: 8px;
     }
   }
 }
+
+.artwork-image {
+  order: -1;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
 .play-toggle {
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-right: 8px;
 }

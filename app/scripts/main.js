@@ -3,7 +3,9 @@
 var soundCloudTemplate = $('#sound-cloud-template').html();
 
 function addSongs(song) {
-  $('.music-content').append(Mustache.render(soundCloudTemplate, song));
+  $('.song-list').append(Mustache.render(soundCloudTemplate, song));
+
+  console.log(song.artwork_url);
 }
 
 var soundCloudCall = function(){
@@ -15,9 +17,10 @@ var soundCloudCall = function(){
   });
 
   SC.get('/users/121957391/tracks', function(songs){
-   $.each(songs, function(i, song){
-     addSongs(song);
-   });
+    $.each(songs, function(i, song){
+      song.artwork_url = song.artwork_url.replace('-large', '-t500x500');
+      addSongs(song);
+    });
   });
 
   setTimeout(function(){
@@ -28,32 +31,40 @@ var soundCloudCall = function(){
 };
 
 var parsingResponse = function(){
-  var musicArray = $('.song-card').toArray();
-  var songArray = $('audio').toArray();
 
-  $.each(musicArray, function(index, musicCard){
+  var musicArray = $('.track').toArray();
+
+  $.each(musicArray, function(index, track){
+
+    // console.log(track);
 
     if (index === 0) {
-      var firstPlayButton = $(this).find('.play-toggle');
-      $(firstPlayButton).attr('src', 'images/pause.svg');
-      $(firstPlayButton).addClass('playing');
-    } else {
-      var playButton = $(this).find('.play-toggle');
-      $(playButton).attr('src', 'images/play.svg');
+      $(track).addClass('playing');
+
+      var imgSrc = $(track).data('artwork');
+      var artworkImage = $('.artwork-image');
+
+      $(artworkImage).attr('src', imgSrc);
+      artworkImage.delay(600).css('opacity', '1');
     }
 
-    $(musicCard).find('.play-toggle').click(function(){
-      if ($(this).hasClass('playing')){
-        $(this).siblings('audio').trigger('pause');
-        $(this).siblings('audio').prop('currentTime', 0);
-        $(this).removeClass('playing');
-        $(this).attr('src', 'images/play.svg');
-      } else {
-        $(this).siblings('audio').trigger('play');
-        $(this).addClass('playing');
-        $(this).attr('src', 'images/pause.svg');
-      }
-    });
+    // console.log(imgSrc);
+
+    // var playButton = $(this).find('.play-toggle');
+    // $(playButton).attr('src', 'images/play.svg');
+    //
+    // $(musicCard).find('.play-toggle').click(function(){
+    //   if ($(this).hasClass('playing')){
+    //     $(this).siblings('audio').trigger('pause');
+    //     $(this).siblings('audio').prop('currentTime', 0);
+    //     $(this).removeClass('playing');
+    //     $(this).attr('src', 'images/play.svg');
+    //   } else {
+    //     $(this).siblings('audio').trigger('play');
+    //     $(this).addClass('playing');
+    //     $(this).attr('src', 'images/pause.svg');
+    //   }
+    // });
   });
 };
 
